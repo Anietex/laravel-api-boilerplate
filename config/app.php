@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Swedigo\Providers\AppServiceProvider::class,
+        Swedigo\Providers\AuthServiceProvider::class,
+        // Swedigo\Providers\BroadcastServiceProvider::class,
+        Swedigo\Providers\EventServiceProvider::class,
+        Swedigo\Providers\RouteServiceProvider::class,
 
     ],
 

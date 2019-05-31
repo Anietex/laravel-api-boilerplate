@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Swedigo\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Http\Controllers';
+    protected $namespace = 'Swedigo\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -39,7 +39,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //
+       $this->mapModuleRoutes();
     }
 
     /**
@@ -69,5 +69,36 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+
+    // Load All Module routes
+    protected function mapModuleRoutes()
+    {
+        $path = base_path('modules/');
+        $pattern = '*'; // All files
+        $dirs = glob($path.$pattern);
+
+
+
+
+        foreach ($dirs as $key => $fullpath) {
+            list($baseDir, $moduleName) = explode($path, $fullpath);
+
+            $routes_path = $fullpath.'/Api/routes.php';
+
+            $versionDirs = glob($fullpath.'/Api/'.$pattern);
+
+            foreach ($versionDirs as $versionPath) {
+
+                $routePath = $versionPath.'/routes.php';
+
+                if(file_exists($routePath))
+                    Route::prefix('api')
+                        ->middleware('api')
+                        ->group($routePath);
+            }
+
+        }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Swedigo\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
