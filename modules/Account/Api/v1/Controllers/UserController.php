@@ -11,6 +11,8 @@ use Swedigo\Modules\BaseController;
 class UserController extends BaseController
 {
 
+
+
     /**
      * @var UserRepository
      */
@@ -26,6 +28,7 @@ class UserController extends BaseController
     /**
      * UserController constructor.
      * @param UserRepository $userRepository
+     * @param UserTransformer $userTransformer
      */
     public function __construct(UserRepository $userRepository,
                                 UserTransformer $userTransformer)

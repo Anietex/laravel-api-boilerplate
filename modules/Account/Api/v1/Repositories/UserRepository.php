@@ -10,6 +10,11 @@ use Swedigo\Modules\BaseRepository;
 class UserRepository extends BaseRepository
 {
 
+
+
+
+
+
     /**
      * @var User
      */
@@ -28,6 +33,8 @@ class UserRepository extends BaseRepository
     public function register(array $userData){
 
        $user = $this->user->create($userData);
+
+
 
        $this->login($userData);
 

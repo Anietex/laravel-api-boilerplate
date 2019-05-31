@@ -16,7 +16,7 @@ class BaseRepository
      */
     public function generateUuid()
     {
-        return Uuid::generate(5,Str::random(5), Uuid::NS_DNS);
+        return Uuid::uuid4()->toString();
     }
 
 
